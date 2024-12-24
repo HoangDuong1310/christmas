@@ -1,0 +1,71 @@
+.letter-container {
+  background: white !important;
+  padding: 30px !important;
+  border-radius: 15px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+  max-width: 500px !important;
+  width: 90% !important;
+  margin: auto !important;
+  position: relative !important;
+  z-index: 100000 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.letter-container {
+  animation: fadeIn 0.3s ease-out forwards !important;
+}
+
+.letter-content {
+  background: linear-gradient(to bottom, #fff9f9 0%, #fff 100%) !important;
+  padding: 20px !important;
+  border: 1px solid #f0f0f0 !important;
+  border-radius: 8px !important;
+}
+
+.letter-title {
+  text-align: center;
+  color: #e53e3e;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+.letter-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 20px;
+  white-space: pre-line;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.letter-signature {
+  font-family: 'Pacifico', cursive;
+  font-size: 1.3rem;
+  color: #e53e3e;
+  text-align: right;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .letter-container {
+    width: 85% !important;
+    margin: 20px !important;
+  }
+
+  .letter-text {
+    font-size: 1rem;
+  }
+}

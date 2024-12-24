@@ -1,0 +1,443 @@
+.christmas-tree-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.tree-wrapper {
+  position: relative;
+  width: 500px;
+  height: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+
+/* Một tam giác đơn giản cho cây thông */
+.tree-layer {
+  position: absolute;
+  width: 500px;
+  height: 600px;
+  background: #2f855a;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  z-index: 2;
+  bottom: 60px;
+}
+
+/* Thân cây */
+.tree-trunk {
+  position: absolute;
+  bottom: 0;
+  width: 50px;
+  height: 60px;
+  background: #8b4513;
+  z-index: 1;
+}
+
+.star {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5rem;
+  color: #ffd700;
+  text-shadow: 
+    0 0 10px #fff,
+    0 0 20px #ffd700,
+    0 0 30px #ffd700,
+    0 0 40px #ffd700;
+  animation: starTwinkle 1.5s ease-in-out infinite;
+  z-index: 10;
+}
+
+.light-decoration {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 12px currentColor;
+  z-index: 4;
+  animation: twinkle 1.5s ease-in-out infinite;
+}
+
+.light-decoration:nth-child(4n) { color: #f56565; }
+.light-decoration:nth-child(4n+1) { color: #48bb78; }
+.light-decoration:nth-child(4n+2) { color: #4299e1; }
+.light-decoration:nth-child(4n+3) { color: #ecc94b; }
+
+.memory-photo {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  z-index: 5;
+  animation: swingPhoto 3s ease-in-out infinite;
+}
+
+.photo-frame {
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transform: scale(1);
+  transition: all 0.3s ease;
+}
+
+.photo-frame:hover {
+  transform: scale(1.15);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  z-index: 100;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+@keyframes starTwinkle {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    text-shadow: 
+      0 0 10px #fff,
+      0 0 20px #ffd700,
+      0 0 30px #ffd700,
+      0 0 40px #ffd700;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    text-shadow: 
+      0 0 15px #fff,
+      0 0 25px #ffd700,
+      0 0 35px #ffd700,
+      0 0 45px #ffd700;
+  }
+}
+
+@keyframes swingPhoto {
+  0%, 100% {
+    transform: rotate(var(--rotation)) translateX(0);
+  }
+  25% {
+    transform: rotate(calc(var(--rotation) + 3deg)) translateX(5px);
+  }
+  75% {
+    transform: rotate(calc(var(--rotation) - 3deg)) translateX(-5px);
+  }
+}
+
+.memory-photo:nth-child(odd) {
+  animation-delay: -1.5s;
+}
+
+.memory-photo:nth-child(even) {
+  animation-delay: -0.75s;
+}
+
+@media (max-width: 768px) {
+  .christmas-tree-container {
+    min-height: 100vh;
+    padding: 1rem;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .tree-wrapper {
+    transform: scale(0.7) !important;
+    transform-origin: bottom center !important;
+    margin-bottom: 20px !important;
+    height: 700px !important;
+  }
+
+  .memory-photo {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  .gift {
+    transform: scale(0.7) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .tree-wrapper {
+    transform: scale(0.6) !important;
+  }
+}
+
+/* Thêm styles cho hộp quà */
+.gift {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: #e53e3e;
+  z-index: 3;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.gift-top {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: #f56565;
+  border-radius: 2px;
+}
+
+.gift-ribbon {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 15px;
+  background: #f56565;
+  border-radius: 2px;
+}
+
+.gift::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 100%;
+  background: #f56565;
+  border-radius: 2px;
+}
+
+.gift::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 8px;
+  background: #f56565;
+  border-radius: 2px;
+}
+
+/* Thêm biến thể màu sắc cho hộp quà */
+.gift:nth-child(3n) {
+  background: #4299e1;
+}
+.gift:nth-child(3n) .gift-top,
+.gift:nth-child(3n)::before,
+.gift:nth-child(3n)::after,
+.gift:nth-child(3n) .gift-ribbon {
+  background: #63b3ed;
+}
+
+.gift:nth-child(3n+1) {
+  background: #48bb78;
+}
+.gift:nth-child(3n+1) .gift-top,
+.gift:nth-child(3n+1)::before,
+.gift:nth-child(3n+1)::after,
+.gift:nth-child(3n+1) .gift-ribbon {
+  background: #68d391;
+}
+
+/* Cập nhật style cho phong bì */
+.christmas-letter {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.envelope-icon {
+  font-size: 3rem;
+}
+
+.envelope-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+}
+
+.christmas-letter:hover {
+  transform: rotate(10deg) scale(1.2) !important;
+}
+
+/* Thêm hoặc cập nhật styles cho letter-overlay */
+.letter-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  z-index: 99999 !important;
+  pointer-events: auto !important;
+}
+
+/* Đảm bảo letter-content hiển thị đúng */
+.letter-content {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  animation: letterAppear 0.5s ease-out;
+  z-index: 1001; /* Cao hơn letter-overlay */
+}
+
+.letter-paper {
+  background: linear-gradient(to bottom, #fff9f9 0%, #fff 100%);
+  padding: 20px;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+}
+
+.letter-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 20px;
+  white-space: pre-line;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.letter-signature {
+  font-family: 'Pacifico', cursive;
+  font-size: 1.3rem;
+  color: #e53e3e;
+  text-align: right;
+  margin-top: 20px;
+}
+
+@keyframes letterAppear {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+  .letter-content {
+    width: 85%;
+    padding: 20px;
+  }
+
+  .letter-text {
+    font-size: 1rem;
+  }
+}
+
+/* Cập nhật animation */
+@keyframes floatEnvelope {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+/* Thêm media query cho responsive */
+@media (max-width: 768px) {
+  .christmas-letter {
+    bottom: '300px' !important;
+    right: '10%' !important;
+  }
+
+  .envelope-icon {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .christmas-letter {
+    right: -40px;
+  }
+}
+
+/* Styles cho tất Giáng sinh */
+.christmas-sock {
+  font-size: 2rem;
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2));
+  transition: transform 0.3s ease;
+}
+
+.christmas-sock:hover {
+  transform: scale(1.2) !important;
+}
+
+.sock-body {
+  animation: swingSock 3s ease-in-out infinite;
+}
+
+/* Styles cho hoa treo */
+.christmas-flower {
+  font-size: 2rem;
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2));
+  transition: transform 0.3s ease;
+}
+
+.christmas-flower:hover {
+  transform: scale(1.2) !important;
+}
+
+.flower-body {
+  animation: rotateFlower 4s linear infinite;
+}
+
+/* Thêm animations */
+@keyframes swingSock {
+  0%, 100% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+@keyframes rotateFlower {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

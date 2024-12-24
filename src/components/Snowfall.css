@@ -1,0 +1,28 @@
+.snowfall-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.snowflake {
+  position: fixed;
+  color: #fff;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+  top: -10px;
+  will-change: transform;
+  animation: snowfall linear infinite;
+}
+
+@keyframes snowfall {
+  from {
+    transform: translateY(-10px) translateX(0) rotate(0deg);
+  }
+  to {
+    transform: translateY(100vh) translateX(20px) rotate(360deg);
+  }
+} 
